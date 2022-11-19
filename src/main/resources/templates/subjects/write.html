@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{/fragments/contentTop :: contentTop}">
+        </section>
+        <!-- Page content-->
+        <form th:action="@{/subjects/write}" th:object="${subject}" method="post">
+            <table>
+
+                <tr>
+                    <th scope="row">제목</th>
+                    <td ><input type="text" th:field="*{name}" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>작성자</th>
+                    <td><input type="text" th:field="*{writer}" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <th>내용</th>
+                    <td><textarea rows="20" cols="70" th:field="*{explanation}" required="required"></textarea></td>
+                </tr>
+
+            </table>
+
+            <a th:href="@{/subjects/index}" class="btn">목록으로</a>
+            <button type="submit" class="btn">등록하기</button>
+            <button th:onclick="updateButton()" class="btn">수정하기</button>
+        </form>
+    </div>
+</div>
+</body>
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    let subject_id =/*[[ ${subject.id} ]]*/;
+    let subject_name =/*[[ ${subject.name} ]]*/;
+    let subject_explanation =/*[[ ${subject.explanation} ]]*/;
+    /*]]*/
+
+    console.log(subject_id);
+    console.log(subject_name);
+    console.log(subject_explanation);
+
+    function postButton() {
+        
+        if (givenArticlePassword == articlePassword) {
+            if(confirm('해당 게시글을 수정하시겠습니까?')){
+
+                window.location.href = 'http://localhost:8080/sample/article'+'/'+articleId;
+
+            } else{
+                alert('수정이 취소되었습니다.');
+            }
+
+        } else {
+            alert("비밀번호를 재확인해주세요");
+        }
+        
+    }
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{/fragments/contentTop :: contentTop}">
+        </section>
+
+        <!-- Page content-->
+
+        <table class="subject_detail">
+
+            <tr>
+                <th>주제 이름</th>
+                <td>[[${subject.name}]]</td>
+            </tr>
+
+            <tr>
+                <th>주제 번호</th>
+                <td>[[${subject.id}]]</td>
+            </tr>
+            <tr>
+                <th>주제 설명</th>
+                <td><textarea rows="20" cols="70" readonly>[[${subject.explanation}]]</textarea></td>
+            </tr>
+
+            <tr>
+                <th>작성자</th>
+                <td>[[${subject.writer}]]</td>
+            </tr>
+
+            <tr>
+                <th>작성일</th>
+                <td>[[${subject.regDate}]]</td>
+            </tr>
+
+            <tr>
+                <th>수정일</th>
+                <td>[[${subject.updatedDatetime}]]</td>
+            </tr>
+
+        </table>
+
+        <button th:onclick="updateButton()" class="btn">수정하기</button>
+
+        <button th:onclick="deleteButton()" class="btn">삭제하기</button>
+
+        <a th:href="@{/subjects/index}" class="btn">목록으로</a>
+
+    </div>
+</div>
+
+</body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let subjectId =/*[[ ${subject.id} ]]*/;
+    /*]]*/
+
+    function updateButton() {
+
+        window.location.href = 'http://localhost:8080/subjects/write'+'?id='+subjectId;
+
+    }
+
+    function deleteButton() {
+
+        if (confirm('삭제하시겠습니까?')){
+
+                const request = new XMLHttpRequest();
+
+                request.open('DELETE', 'http://localhost:8080/subjects'+'/'+subjectId);
+
+                request.send();
+
+                alert('삭제가 완료되었습니다.');
+
+                window.location.href = 'http://localhost:8080/subjects/index';
+
+        } else {
+            alert('삭제가 취소되었습니다.')
+        }
+    }
+</script>
+</html>

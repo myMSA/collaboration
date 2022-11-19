@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{sample/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{sample/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{sample/fragments/contentTop :: contentTop}">
+        </section>
+
+        <!-- Page content-->
+
+        <table class="article_detail">
+
+            <tr>
+                <th>제목</th>
+                <td>[[${article.title}]]</td>
+            </tr>
+
+            <tr>
+                <th>글 번호</th>
+                <td>[[${article.id}]]</td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><textarea rows="20" cols="70" readonly>[[${article.content}]]</textarea></td>
+            </tr>
+
+            <tr>
+                <th>작성일</th>
+                <td>[[${article.regDate}]]</td>
+            </tr>
+
+            <tr>
+                <th>조회수</th>
+                <td>[[${article.readCount}]]</td>
+            </tr>
+
+
+        </table>
+
+        <a th:href="@{.}" class="btn">목록으로</a>
+
+        <button th:onclick="updateButton()" class="btn">수정하기</button>
+
+        <button th:onclick="deleteButton()" class="btn">삭제하기</button>
+
+    </div>
+</div>
+
+</body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let articleId =/*[[ ${article.id} ]]*/;
+    let articlePassword =/*[[ ${article.password} ]]*/;
+    /*]]*/
+
+    console.log(articlePassword);
+
+    function updateButton() {
+
+        let givenArticlePassword = prompt('게시글 생성 시 비밀번호를 넣어주세요.');
+
+        if (givenArticlePassword == articlePassword) {
+            if(confirm('해당 게시글을 수정하시겠습니까?')){
+
+                window.location.href = 'http://localhost:8080/sample/article'+'/'+articleId;
+
+            } else{
+                alert('수정이 취소되었습니다.');
+            }
+
+        } else {
+            alert("비밀번호를 재확인해주세요");
+        }
+    }
+
+    function deleteButton() {
+
+        let givenArticlePassword = prompt('게시글 생성 시 비밀번호를 넣어주세요.');
+
+        if (givenArticlePassword == articlePassword) {
+            if(confirm('해당 게시글을 삭제하시겠습니까?')){
+
+                const req = new XMLHttpRequest();
+
+                req.open('DELETE', 'http://localhost:8080/sample/article'+'/'+articleId);
+
+                req.send();
+
+                // 현재는 단순하게, 전송하고 끝이지만, 응답내용에 따라서 보다 세밀한 설명필요
+                alert('삭제가 완료되었습니다.');
+
+            } else{
+                alert('삭제가 취소되었습니다.')
+            }
+
+            window.location.href = 'http://localhost:8080/sample/articles';
+
+
+        } else {
+            alert("비밀번호를 재확인해주세요");
+        }
+    }
+</script>
+</html>

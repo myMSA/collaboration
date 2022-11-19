@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.strange.cooperation.CooperationApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-18T06:45:13" hostname="DESKTOP-JFVUOTM" time="0.161">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.strange.cooperation.CooperationApplicationTests" time="0.161"/>
+  <system-out><![CDATA[15:45:06.630 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:45:06.643 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:45:06.683 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.strange.cooperation.CooperationApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:45:06.699 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.strange.cooperation.CooperationApplicationTests], using SpringBootContextLoader
+15:45:06.705 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.strange.cooperation.CooperationApplicationTests]: class path resource [com/strange/cooperation/CooperationApplicationTests-context.xml] does not exist
+15:45:06.706 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.strange.cooperation.CooperationApplicationTests]: class path resource [com/strange/cooperation/CooperationApplicationTestsContext.groovy] does not exist
+15:45:06.707 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.strange.cooperation.CooperationApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:45:06.708 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.strange.cooperation.CooperationApplicationTests]: CooperationApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:45:06.766 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.strange.cooperation.CooperationApplicationTests]
+15:45:06.836 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\cooperation\workspace\cooperation\build\classes\java\main\com\strange\cooperation\CooperationApplication.class]
+15:45:06.838 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.strange.cooperation.CooperationApplication for test class com.strange.cooperation.CooperationApplicationTests
+15:45:06.966 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.strange.cooperation.CooperationApplicationTests]: using defaults.
+15:45:06.967 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+15:45:06.987 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3a45c42a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@36dce7ed, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@47a64f7d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@33d05366, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@27a0a5a2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7692cd34, org.springframework.test.context.transaction.TransactionalTestExecutionListener@33aa93c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@32c0915e, org.springframework.test.context.event.EventPublishingTestExecutionListener@106faf11, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@70f43b45, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@26d10f2e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@10ad20cb, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7dd712e8, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2c282004, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@22ee2d0]
+15:45:06.991 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@11ee02f8 testClass = CooperationApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4102b1b1 testClass = CooperationApplicationTests, locations = '{}', classes = '{class com.strange.cooperation.CooperationApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@d8305c2, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@4879f0f2, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5b43fbf6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@a4b2d8f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@55b5f5d2, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6aa8e115], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.5)
+
+2022-11-18 15:45:07.384  INFO 34112 --- [    Test worker] c.s.c.CooperationApplicationTests        : Starting CooperationApplicationTests using Java 11 on DESKTOP-JFVUOTM with PID 34112 (started by devsacti in C:\cooperation\workspace\cooperation)
+2022-11-18 15:45:07.386  INFO 34112 --- [    Test worker] c.s.c.CooperationApplicationTests        : No active profile set, falling back to 1 default profile: "default"
+2022-11-18 15:45:08.283  INFO 34112 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-18 15:45:08.348  INFO 34112 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 2 JPA repository interfaces.
+2022-11-18 15:45:08.954  INFO 34112 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-18 15:45:09.234  INFO 34112 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-18 15:45:09.312  INFO 34112 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-18 15:45:09.401  INFO 34112 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.12.Final
+2022-11-18 15:45:09.667  INFO 34112 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-18 15:45:09.884  INFO 34112 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: 
+    
+    drop table if exists sample CASCADE 
+Hibernate: 
+    
+    drop table if exists subject CASCADE 
+Hibernate: 
+    
+    create table sample (
+       id bigint generated by default as identity,
+        content varchar(255),
+        password varchar(255),
+        read_count bigint,
+        reg_date varchar(255),
+        title varchar(255),
+        writer varchar(255),
+        email varchar(255),
+        updated_datetime timestamp,
+        username varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table subject (
+       id bigint generated by default as identity,
+        explanation varchar(255),
+        name varchar(255),
+        reg_date varchar(255),
+        updated_datetime timestamp,
+        writer varchar(255),
+        primary key (id)
+    )
+2022-11-18 15:45:10.627  INFO 34112 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-18 15:45:10.638  INFO 34112 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-18 15:45:11.419  WARN 34112 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-18 15:45:11.785  INFO 34112 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:memory'
+2022-11-18 15:45:11.804  INFO 34112 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-11-18 15:45:13.034  INFO 34112 --- [    Test worker] c.s.c.CooperationApplicationTests        : Started CooperationApplicationTests in 6.0 seconds (JVM running for 9.215)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

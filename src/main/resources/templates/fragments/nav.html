@@ -1,0 +1,14 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="navFragment">
+    <!-- Side nav bar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light" th:href="@{/sample/index}">ourCooperation</div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/sample/articles}">articles</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/subjects/index}">subjects index</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/subjects/home}">subjects home</a>
+        </div>
+    </div>
+
+</th:block>
+</html>

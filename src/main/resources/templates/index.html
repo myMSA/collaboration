@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: headFragment}"></head>
+
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- Side nav bar-->
+    <nav th:replace="~{fragments/nav :: navFragment}">
+    </nav>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{fragments/contentTop :: contentTop}">
+        </section>
+
+        <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">블로그 서비스 프로토타입 개요</h1>
+            <p>좌측 메뉴들을 통해서 기존 서비스의 일부 영역과 그 화면 그리고 기능을 확인가능함.</p>
+            <p>프로젝트에서 sample 하위( 또는 샘플 도메인)의 소스 코드들로 구현된 화면과 기능들</p>
+            <p>샘플 도메인에서의 코딩과 테스트를 거친 후 개별 도메인 디렉토리, 가령 article, board, 페이징, 등에 실제 코딩</p>
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+</html>
