@@ -15,4 +15,4 @@ dancingkim branch will make the frontend more compliant with client
 
 but, we will change each other's roles until possible.
 
-and, we will change the name of prj from cooperation to collaboration
+and, we will change the name of prj from cooperation to collaboration and move to gitlab for gitops
