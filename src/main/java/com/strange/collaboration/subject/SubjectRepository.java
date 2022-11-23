@@ -1,4 +1,4 @@
-package com.strange.cooperation.subject;
+package com.strange.collaboration.subject;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

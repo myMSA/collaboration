@@ -23,6 +23,8 @@ dependencies {
 	Springdoc OpenAPI UI
 	 */
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

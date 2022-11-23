@@ -1,4 +1,4 @@
-package com.strange.cooperation.sample;
+package com.strange.collaboration.sample;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

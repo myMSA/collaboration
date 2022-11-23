@@ -1,7 +1,6 @@
-package com.strange.cooperation.sample;
+package com.strange.collaboration.sample;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,14 +22,17 @@ public class SampleController {
         return "sample/index";
     }
 
-    @GetMapping({"/articles"})
-    @Operation(summary = "Get All Articles")
-    public String getArticles(Model model) throws Exception {
+    /*
+     *
+     */
 
-        // 현재 가정한 샘플의 구체적인 속성은 글로서 articles이라는 속성명을 부여함
+    @GetMapping({"/articles"})
+    @Operation(summary = "Get ArticleList")
+    public String getArticleList(Model model) throws Exception {
+
         model.addAttribute("articles",sampleService.findAllSample());
 
-        return "sample/article/articles";
+        return "sample/article/articleList";
     }
 
     @GetMapping({"/articles/{id}"})
@@ -40,41 +42,6 @@ public class SampleController {
         return "sample/article/articleDetail";
     }
 
-    @GetMapping("/article")
-    @Operation(summary = "Get ArticleInsert for Posting Article")
-    public String findArticleForm(Model model, Sample article) throws Exception {
-        model.addAttribute("article", article);
-
-        return "sample/article/articleInsert";
-    }
-
-    @PostMapping("/article")
-    @Operation(summary = "Post Article")
-    public String addArticle(@ModelAttribute Sample article) throws Exception {
-        log.info(article.toString());
-        sampleService.addArticle(article);
-
-        return "redirect:/sample/articles";
-    }
-
-    @GetMapping("/article/{id}")
-    @Operation(summary = "Get ArticleUpdate for Updating Article")
-    public String findArticleUpdateForm(Model model, @PathVariable Long id) throws Exception {
-        log.info(sampleService.findSampleDetailById(id).toString());
-        sampleService.findSampleDetailById(id).ifPresent(sample -> model.addAttribute("article", sample));
-        return "sample/article/articleUpdate";
-    }
-
-    @PatchMapping("/article")
-    @Operation(summary = "Patch ArticleDetail")
-    public String updateArticleDetail(@ModelAttribute Sample article) throws Exception {
-        log.info(article.toString());
-        sampleService.updateArticle(article);
-
-        return "redirect:/sample/articles";
-    }
-
-
     @DeleteMapping("article/{id}")
     @Operation(summary = "Delete Article")
     public void deleteArticle(@PathVariable Long id) throws Exception {
@@ -82,4 +49,48 @@ public class SampleController {
         sampleService.deleteArticleById(id);
 
     }
+
+    /*
+     *
+     */
+
+    @GetMapping("/article")
+    @Operation(summary = "Get postArticleForm for Posting Article")
+    public String getArticleForm(Model model, Sample article) throws Exception {
+        model.addAttribute("article", article);
+
+        return "sample/article/postArticleForm";
+    }
+
+    @PostMapping("/article")
+    @Operation(summary = "Post Article")
+    public String postArticle(@ModelAttribute Sample article) throws Exception {
+        log.info(article.toString());
+        sampleService.addArticle(article);
+
+        return "redirect:/sample/articles";
+    }
+
+    /*
+     *
+     */
+
+    @GetMapping("/article/{id}")
+    @Operation(summary = "Get ArticleUpdate for Updating Article")
+    public String getArticleUpdateForm(Model model, @PathVariable Long id) throws Exception {
+        log.info(sampleService.findSampleDetailById(id).toString());
+        sampleService.findSampleDetailById(id).ifPresent(sample -> model.addAttribute("article", sample));
+        return "sample/article/updateArticleForm";
+    }
+
+    @PutMapping("/article")
+    @Operation(summary = "Put ArticleDetail")
+    public String updateArticleDetail(@ModelAttribute Sample article) throws Exception {
+        log.info("i am updateArticleDetail Method "+article.toString());
+        sampleService.updateArticle(article);
+
+        return "redirect:/sample/articles";
+    }
+
+
 }

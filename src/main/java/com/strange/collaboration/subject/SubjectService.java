@@ -1,4 +1,4 @@
-package com.strange.cooperation.subject;
+package com.strange.collaboration.subject;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

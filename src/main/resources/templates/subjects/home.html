@@ -50,6 +50,42 @@
 
     let tbody1 = document.getElementById('tbody1');
 
+    function getButton0() {
+        
+        const request = new XMLHttpRequest();
+
+        request.open('GET', 'http://localhost:8080/subjects/all');
+
+        request.send();
+
+        request.onload = function () {
+            const response = JSON.parse(request.responseText);
+            console.log(response);
+
+            const column_num = 6;
+            for(let i=0; i<response.length;i++){
+                console.log(response[i]);
+
+                const row = tbody1.insertRow();
+
+                for(key in response[i]){
+                    console.log(key);
+                    console.log(response[i][key]);
+
+                    const col = row.insertCell();
+                    const col_value = document.createTextNode(response[i][key]);
+
+                    col.appendChild(col_value);
+                }
+
+            }
+
+        }
+    }
+</script>
+
+<script th:inline="javascript">
+
     function getButton() {
         
         const request = new XMLHttpRequest();
@@ -83,5 +119,6 @@
         }
     }
 </script>
+
 </html>
 

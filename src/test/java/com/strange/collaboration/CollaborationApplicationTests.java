@@ -1,10 +1,10 @@
-package com.strange.cooperation;
+package com.strange.collaboration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CooperationApplicationTests {
+class CollaborationApplicationTests {
 
 	@Test
 	void contextLoads() {

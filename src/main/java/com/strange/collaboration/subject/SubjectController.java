@@ -1,7 +1,5 @@
-package com.strange.cooperation.subject;
+package com.strange.collaboration.subject;
 
-import com.strange.cooperation.sample.Sample;
-import com.strange.cooperation.sample.SampleService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
 @RequestMapping("/subjects")
 public class SubjectController {
-
-    @Autowired
-    SampleService sampleService;
 
     @Autowired
     SubjectService subjectService;
@@ -69,6 +63,17 @@ public class SubjectController {
     }
 
     /**
+     * Make
+     * Method 3.0(TO-BE) ; getSubjectDetail Controller that api rest controller whose response is json
+     * below
+     */
+
+
+
+
+
+
+    /**
      * Method 1 ; get Subject write
      * Method 2 ; POST
      * Method 3 ; Patch
@@ -84,12 +89,14 @@ public class SubjectController {
             id = -1l;
         }
 
+        model.addAttribute("id",id);
+
         return "subjects/write";
     }
 
     @PostMapping("/write")
     @Operation(summary = "Post Subject")
-    public String postSubject(@ModelAttribute Subject subject) throws Exception {
+    public String postSubject(@RequestBody Subject subject) throws Exception {
         log.info(subject.toString());
         subjectService.createSubject(subject);
 
@@ -98,7 +105,7 @@ public class SubjectController {
 
     @PatchMapping("/write")
     @Operation(summary = "Patch SubjectDetail")
-    public String updateSubjectDetail(@ModelAttribute Subject subject,@RequestParam(value = "id" , required = true) Long id) throws Exception {
+    public String updateSubjectDetail(@RequestBody Subject subject) throws Exception {
         log.info(subject.toString());
         subjectService.updateSubject(subject);
 

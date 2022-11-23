@@ -15,29 +15,27 @@
         <section th:insert="~{/fragments/contentTop :: contentTop}">
         </section>
         <!-- Page content-->
-        <form th:action="@{/subjects/write}" th:object="${subject}" method="post">
             <table>
 
                 <tr>
                     <th scope="row">제목</th>
-                    <td ><input type="text" th:field="*{name}" required="required"/></td>
+                    <td ><input type="text" id="subject_name" th:field="${subject.name}" required="required"/></td>
                 </tr>
                 <tr>
                     <th>작성자</th>
-                    <td><input type="text" th:field="*{writer}" required="required"/></td>
+                    <td><input type="text" id="subject_writer" th:field="${subject.writer}" required="required"/></td>
                 </tr>
 
                 <tr>
                     <th>내용</th>
-                    <td><textarea rows="20" cols="70" th:field="*{explanation}" required="required"></textarea></td>
+                    <td><textarea rows="20" cols="70" id="subject_explanation" th:field="${subject.explanation}" required="required"></textarea></td>
                 </tr>
 
             </table>
-
-            <a th:href="@{/subjects/index}" class="btn">목록으로</a>
-            <button type="submit" class="btn">등록하기</button>
-            <button th:onclick="updateButton()" class="btn">수정하기</button>
-        </form>
+        
+        <button th:onclick="writeButton()" class="btn">등록하기</button>
+        <button th:onclick="updateButton()" class="btn">수정하기</button>
+        <a th:href="@{/subjects/index}" class="btn">목록으로</a>
     </div>
 </div>
 </body>
@@ -54,22 +52,74 @@
     console.log(subject_name);
     console.log(subject_explanation);
 
-    function postButton() {
-        
-        if (givenArticlePassword == articlePassword) {
-            if(confirm('해당 게시글을 수정하시겠습니까?')){
+    function writeButton() {
 
-                window.location.href = 'http://localhost:8080/sample/article'+'/'+articleId;
+        let val_name = document.querySelector("#subject_name").value;
+        let val_writer = document.querySelector("#subject_writer").value;
+        let val_explanation = document.querySelector("#subject_explanation").value;
 
-            } else{
-                alert('수정이 취소되었습니다.');
-            }
-
-        } else {
-            alert("비밀번호를 재확인해주세요");
-        }
-        
+    data ={
+        "name" : val_name,
+        "writer" : val_writer,
+        "explanation" : val_explanation
     }
+
+    console.log(data);
+
+    const request = new XMLHttpRequest();
+
+    request.open('POST', 'http://localhost:8080/subjects/write');
+
+    request.setRequestHeader('Content-Type','application/json');
+
+    // request.send(data);
+    request.send(JSON.stringify(data));
+
+    // callback
+    request.onload = function (){
+        if(request.status==200){
+            alert('등록이 완료되었습니다.');
+            window.location.href = 'http://localhost:8080/subjects/index'
+        } else {
+            //nothing
+        }
+    }
+    
+    }
+
+
+    function updateButton() {
+        let val_name = document.querySelector("#subject_name").value;
+        let val_writer = document.querySelector("#subject_writer").value;
+        let val_explanation = document.querySelector("#subject_explanation").value;
+
+    data ={
+        "id" : subject_id,
+        "name" : val_name,
+        "writer" : val_writer,
+        "explanation" : val_explanation
+    }
+        const request = new XMLHttpRequest();
+
+        request.open('PUT', 'http://localhost:8080/subjects/write');
+
+        request.setRequestHeader('Content-Type','application/json');
+
+        // request.send(data);
+        request.send(JSON.stringify(data));
+
+        // callback
+        request.onload = function (){
+            if(request.status==200){
+                alert('수정이 완료되었습니다.');
+                window.location.href = 'http://localhost:8080/subjects/index'
+            } else {
+                //nothing
+            }
+        }
+
+    }
+
 </script>
 
 </html>

@@ -1,4 +1,4 @@
-package com.strange.cooperation.sample;
+package com.strange.collaboration.sample;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
-package com.strange.cooperation.article;
+package com.strange.collaboration.article;
 
-import com.strange.cooperation.sample.Sample;
-import com.strange.cooperation.sample.SampleService;
+import com.strange.collaboration.sample.Sample;
+import com.strange.collaboration.sample.SampleService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
