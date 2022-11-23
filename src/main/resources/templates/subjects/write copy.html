@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{/fragments/contentTop :: contentTop}">
+        </section>
+        <!-- Page content-->
+            <table>
+
+                <tr>
+                    <th scope="row">제목</th>
+                    <td ><input type="text" id="subject_name" th:field="${subject.name}" required="required"/></td>
+                </tr>
+                <tr>
+                    <th>작성자</th>
+                    <td><input type="text" id="subject_writer" th:field="${subject.writer}" required="required"/></td>
+                </tr>
+
+                <tr>
+                    <th>내용</th>
+                    <td><textarea rows="20" cols="70" id="subject_explanation" th:field="${subject.explanation}" required="required"></textarea></td>
+                </tr>
+
+            </table>
+        
+        <button th:onclick="writeButton()" class="btn">등록하기</button>
+        <button th:onclick="updateButton()" class="btn">수정하기</button>
+        <a th:href="@{/subjects/index}" class="btn">목록으로</a>
+    </div>
+</div>
+</body>
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    let subject_id =/*[[ ${subject.id} ]]*/;
+    let subject_name =/*[[ ${subject.name} ]]*/;
+    let subject_explanation =/*[[ ${subject.explanation} ]]*/;
+    /*]]*/
+
+    console.log(subject_id);
+    console.log(subject_name);
+    console.log(subject_explanation);
+
+    function writeButton() {
+
+        let val_name = document.querySelector("#subject_name").value;
+        let val_writer = document.querySelector("#subject_writer").value;
+        let val_explanation = document.querySelector("#subject_explanation").value;
+
+    data ={
+        "name" : val_name,
+        "writer" : val_writer,
+        "explanation" : val_explanation
+    }
+
+    console.log(data);
+
+    const request = new XMLHttpRequest();
+
+    request.open('POST', 'http://localhost:8080/subjects/write');
+
+    request.setRequestHeader('Content-Type','application/json');
+
+    // request.send(data);
+    request.send(JSON.stringify(data));
+
+    // callback
+    request.onload = function (){
+        if(request.status==200){
+            alert('등록이 완료되었습니다.');
+            window.location.href = 'http://localhost:8080/subjects/index'
+        } else {
+            //nothing
+        }
+    }
+    
+    }
+
+
+    function updateButton() {
+        let val_name = document.querySelector("#subject_name").value;
+        let val_writer = document.querySelector("#subject_writer").value;
+        let val_explanation = document.querySelector("#subject_explanation").value;
+
+    data ={
+        "id" : subject_id,
+        "name" : val_name,
+        "writer" : val_writer,
+        "explanation" : val_explanation
+    }
+        const request = new XMLHttpRequest();
+
+        request.open('PUT', 'http://localhost:8080/subjects/write');
+
+        request.setRequestHeader('Content-Type','application/json');
+
+        // request.send(data);
+        request.send(JSON.stringify(data));
+
+        // callback
+        request.onload = function (){
+            if(request.status==200){
+                alert('수정이 완료되었습니다.');
+                window.location.href = 'http://localhost:8080/subjects/index'
+            } else {
+                //nothing
+            }
+        }
+
+    }
+
+</script>
+
+</html>

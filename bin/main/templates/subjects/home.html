@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/head :: headFragment}"></head>
+
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- Side nav bar-->
+    <nav th:replace="~{/fragments/nav :: navFragment}">
+    </nav>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{/fragments/contentTop :: contentTop}">
+        </section>
+
+        <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">우리가 협업을 해야할 주제들은 무엇일까?</h1>
+            <p>무엇에 대해서 협업을 해야할까? 데이터 모델링, 데이터베이스 활용, 백엔드</p>
+            <p>어떻게 협업 해야할까? github, google docs 등</p>
+            <p>이것들 외에 우리가 고민해 나가야 할 부분들이 무엇일까? 모아두자</p>
+        </div>
+
+        <h1>주제 목록</h1>
+        <table class="subject_list">
+            <thead>
+            <tr>
+                <th scope="col">주제 번호</th>
+                <th scope="col">주제 이름</th>
+                <th scope="col">주제 설명</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+                <th scope="col">수정일</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbody1">
+
+            </tbody>
+        </table>
+        <button th:onclick="getButton()" class="btn">주제 직접요청, 자동실행도 해보자</button>
+    </div>
+
+</div>
+</body>
+
+<script th:inline="javascript">
+
+    let tbody1 = document.getElementById('tbody1');
+
+    function getButton0() {
+        
+        const request = new XMLHttpRequest();
+
+        request.open('GET', 'http://localhost:8080/subjects/all');
+
+        request.send();
+
+        request.onload = function () {
+            const response = JSON.parse(request.responseText);
+            console.log(response);
+
+            const column_num = 6;
+            for(let i=0; i<response.length;i++){
+                console.log(response[i]);
+
+                const row = tbody1.insertRow();
+
+                for(key in response[i]){
+                    console.log(key);
+                    console.log(response[i][key]);
+
+                    const col = row.insertCell();
+                    const col_value = document.createTextNode(response[i][key]);
+
+                    col.appendChild(col_value);
+                }
+
+            }
+
+        }
+    }
+</script>
+
+<script th:inline="javascript">
+
+    function getButton() {
+        
+        const request = new XMLHttpRequest();
+
+        request.open('GET', 'http://localhost:8080/subjects/all');
+
+        request.send();
+
+        request.onload = function () {
+            const response = JSON.parse(request.responseText);
+            console.log(response);
+
+            const column_num = 6;
+            for(let i=0; i<response.length;i++){
+                console.log(response[i]);
+
+                const row = tbody1.insertRow();
+
+                for(key in response[i]){
+                    console.log(key);
+                    console.log(response[i][key]);
+
+                    const col = row.insertCell();
+                    const col_value = document.createTextNode(response[i][key]);
+
+                    col.appendChild(col_value);
+                }
+
+            }
+
+        }
+    }
+</script>
+
+</html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{sample/fragments/head :: headFragment}"></head>
+<body>
+<header></header>
+<div class="d-flex" id="wrapper">
+    <!-- nav fragment -->
+    <nav th:replace="~{sample/fragments/nav :: navFragment}">
+    </nav>
+    <!-- nav fragment end -->
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- header ; control nav and etc -->
+        <section th:insert="~{sample/fragments/contentTop :: contentTop}">
+        </section>
+
+        <!-- Page content-->
+
+        <h1>공지사항</h1>
+        <table class="article_list">
+            <colgroup>
+                <col width="15%"/>
+                <col width="*"/>
+                <col width="15%"/>
+                <col width="20%"/>
+            </colgroup>
+
+            <thead>
+            <tr>
+                <th scope="col">글번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">조회수</th>
+                <th scope="col">작성일</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="article,articleStat : ${articles}">
+
+                <td>[[${articleStat.count}]]</td>
+                <td><a th:href="@{/sample/articles/{id} ( id=${article.id} ) }"><h6>[[ ${article.title}]]</h6></a></td>
+                <td>[[${article.readCount}]]</td>
+                <td>[[${article.regDate}]]</td>
+
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/sample/article}" class="btn">등록하기</a>
+        </section>
+
+    </div>
+
+</body>
+</html>
